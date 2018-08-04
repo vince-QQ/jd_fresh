@@ -1,4 +1,4 @@
-<?
+﻿<?
 
 class Goods extends Control{
   
@@ -54,6 +54,9 @@ class Goods extends Control{
 
 
 	function edit_user(){
+		$this->display();
+	}
+function edit_user1(){
 		$this->display();
 	}
 
