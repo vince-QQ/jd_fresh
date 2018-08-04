@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册界面</title>
+	
+	
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		body{
+			background: url('picture/background2.jpg');
+			background-size: 100% 100%;
+		}
+		h1{
+			text-align: center;
+			margin-top: 110px;
+		}
+		.wrap{
+			font-size: 30px;
+			width: 366px;
+			
+			margin: 80px auto;
+		}
+		.btn1,.btn2{
+			padding:6px 15px;
+			color: white;
+			background: orange;
+			font-size: 20px;
+			border-radius: 10px;
+			outline: none;
+			box-shadow: 2px 2px 8px;
+			margin-top: 40px;
+			margin-left:140px;
+		}
+		.form-control1,.form-control2{
+			height: 30px;
+			line-height: 30px;
+			font-size: 20px;
+		}
+		.form-group{
+			margin-bottom:  30px;
+		}
+		.pal{
+			margin-left:15px;
+		}
+		.form-control2{
+			margin-left: 14px;
+		}
+		#alt{
+			font-size: 14px;
+			color: red;
+			margin-left: 200px;
+		}
+	</style>
+</head>
+<body>
+	<h1>我是注册界面</h1>
+<div class="wrap">
+	<form action="http://localhost/pratice_mvc/index.php" method="post" name="Form" onsubmit="return onsbm">
+		<div class="form-group">
+			<label >用户名：</label> 
+			<input name="uname" type="text" class="form-control1" onblur="change()" id="txt" style="border: 1px solid gray;" required="tru"><span id="alt"></span>
+			
+		</div>
+
+		<div class="form-group">
+			
+			<label class="pal">密码：</label> 
+			<input name="password" type="text" class="form-control2" style="border: 1px solid gray;" required="true">
+			
+		</div>
+			<input type="hidden" name="control" value="user">
+			<input type="hidden" name="action" value="do_reg">
+			<!-- 这里设置两个隐藏的input是为了将两个参数随着post一起传过去，action后面的URL不能带参 -->
+			<input type="submit" class="btn2" value="注册">
+	</form>
+</div>
+<script type="text/javascript">
+	 var onsbm = true;
+	function change(){
+      // var di = document.getElementById('wrap');
+      
+      if(Form.uname.value){
+      var warm = document.getElementById('txt');
+      var alt = document.getElementById('alt');
+      var ajax = new XMLHttpRequest();
+      var uname = Form.uname.value;
+      console.log(uname);
+      ajax.open('get','http://localhost/pratice_mvc/index.php?control=user&action=before_reg&uname='+uname);
+      ajax.send();
+      ajax.onreadystatechange = function(){
+      			if ( ajax.readyState==4 && ajax.status==200) {
+      				if(ajax.responseText == '该用户名已被注册'){
+      					alt.innerHTML = '该用户名已被注册！';
+      					warm.style = 'border:2px solid red';
+      					onsbm = false;
+
+      				}
+      				else{
+      					onsbm = true;
+      					warm.style = 'border:1px solid gray';
+      					alt.innerHTML = '';
+      				}
+
+      			}
+      }
+	}
+  	}
+	
+
+
+
+</script>
+</body>
+</html>

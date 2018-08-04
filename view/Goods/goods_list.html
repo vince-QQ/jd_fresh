@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+    
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+    padding:0;
+    margin: 0;
+}
+ul>li{
+    list-style: none;
+}
+.box{
+    width: 100%;
+    height: 80%;
+    margin: auto;
+}
+.box .top{
+
+    width:100%;
+    height: 20%;
+
+}
+.box .top img{
+    width:100%;
+    height: 100%;
+
+}
+.box .bottom{
+    width:100%;
+    height: 80%;
+    border: #ccc 1px solid;
+}
+.box .bottom .left{
+    width: 15%;
+    height: 100%;
+    text-align: left;
+    padding: 50px;
+    background: #ccc;
+    float: left;
+}
+.box .bottom .left a{
+    list-style: none;
+    color: black;
+    text-decoration: none;
+}
+.box .bottom .left ul{
+    width:100%;
+    height: 100%;
+   
+}
+.box .bottom .left ul li{
+    width: 100%;
+    height: 100%;
+    margin-top: 20px; 
+    cursor: pointer;  
+}
+.box .bottom .left ul li:active{
+        color: red;
+}
+
+.box .bottom .right{
+    float: left;
+    width: 80%;
+    height: 100%;
+}
+.box .bottom .right .p_adress{
+    width:100%;
+    height: 100%;
+    display:none;
+}
+.box .bottom .right .p_adress ul{
+
+    width: 100%;
+    height: 400px;
+    overflow: scroll;
+}
+.box .bottom .right .p_adress ul li{
+      line-height: 40px;
+      font-size: 20px;
+      text-align: center;
+      border: 1px #ccc solid;
+}
+.box .bottom .right .p_adress ul:hover{
+    box-shadow: 1px 1px 9px #666;
+}
+.box .bottom .right .p_adress div{
+    width: 100px;
+    height: 50px;
+    margin:30px auto;
+}
+.box .bottom .right .p_information{
+        
+}
+.box .bottom .right .p_information .main{
+
+    width: 50%;
+    margin:40px auto 0;
+    
+}
+.box .bottom .right .p_information .main1{
+
+        line-height: 30px;
+        width: 200px;
+        height: 30px;
+        text-align: center;
+        margin:20px auto;
+}
+
+.view{
+    
+    width: 980px;
+    height: 500px;
+    border: 5px solid #6a6a6a;
+    border-top-right-radius: 50px;
+    border-top-left-radius: 50px;
+    margin: auto;
+    text-align: center;
+    overflow: hidden;
+}
+.view .container{
+    width: 100%;
+    padding: 0;
+}
+.view .container .bg{
+
+    width: 100%;
+    height: 80px;
+    background:#1b432e;
+    margin: 0;
+}
+.view .container .bg .bg1{
+    font-size: 30px;
+    color: #fff;
+    line-height: 80px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+.view .container .bg .bg2{
+    color: #00bb39;
+}
+.view .container .bg .juli{
+    margin-right: 160px;
+}
+.view .container .bg .daojishi{
+
+    color: #fff;
+    font-size: 10px;
+    line-height: 80px;
+    font-weight: bolder;
+    text-align: right;
+}
+.da{
+    color: #fff;
+    font-size: 40px;
+    line-height: 80px;
+    font-weight: bolder;
+    margin-left: 20px;
+    text-align: right;
+}
+.da1{
+    color: #fff;
+    font-size: 40px;
+    font-weight: bolder;
+    text-align: center;
+}
+.goods_list{
+    display: flex; 
+    width: 100%;
+    height: 324px;
+    padding: 24px 0;
+    transition: all 2s;
+    
+}
+.view .goods_list li {
+     width: 180px;
+     height: 300px;
+     position: relative;
+     margin-right: 15px;
+}
+.view .goods_list li a{
+    list-style:none;
+    text-decoration: none;
+    color: black;
+}
+.view .goods_list li img{
+    width: 180px;
+}
+.view .goods_list li .fu{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background: #ff541f;
+    position: absolute;
+
+    transition: all 0.5s;
+    font-size: 15px;
+    color: #fff;
+    font-weight: bold;
+    display: none;
+}
+.view .goods_list li:hover{
+    box-shadow: 1px 1px 9px #666;
+}
+.view .goods_list li:hover .fu{
+    display: block;
+    bottom:-30px;
+}
+.view .goods_list li h3{
+    font-size: 15px;
+    margin: 20px 0;
+}
+.view .goods_list li h4{
+    font-size: 10px;
+    color: rgba(0, 0,0, 0.5);
+    position: absolute;
+    bottom: -25px;
+    left: 50px;
+}
+.row{
+    margin: 0;
+}
+.cur{
+    color: #f58384;
+    font-size: 20px
+}
+.goods_list_box{ 
+    position: relative;   
+    width: 100%; 
+    height: 390px;
+    overflow: hidden;
+}
+.goods_list_box .left_arrow, .goods_list_box .right_arrow{
+    position: absolute;
+    top: 40%;
+    background-color: rgba(29, 29, 29, 0.26);
+    padding: 10px; cursor: pointer;
+}
+.goods_list_box .left_arrow{
+    left:0px; 
+    z-index:2;
+}
+.goods_list_box .right_arrow{
+    right: 0px; 
+    z-index:2;
+}
+.paopao_box
+{
+    position: absolute;
+    left: 45%;
+    bottom: 0px; 
+    display: flex;
+}
+.paopao_box > div{
+    width: 10px;
+    height: 10px;
+    border: 1px solid #f58384;
+    border-radius: 50%;margin: 0 5px;
+}
+.paopao_box .active
+{background-color:#f58384;
+    border: 1px solid #fff; 
+    width: 20px 
+}
+.price{
+
+  width: 160px;
+  height: 30px;
+  margin-left: 10px;
+  background: red;
+  font-size: 20px;
+  color: white;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="box ">
+        <div class="top"><img src="picture/1.png" alt=""></div>
+        <div class="bottom ">
+            <div class=" left">
+
+                    <h3>设置</h3>
+                    <ul>
+                        <a href="http://localhost/pratice_mvc/index.php?control=Personal&action=edit_user"><li class="grxx"> 个人信息</li></a>
+                        <li> 账户安全</li>
+                        <li> 我的尺码</li>
+                        <li> 账户绑定</li>
+                        <a href="http://localhost/pratice_mvc/index.php?control=Address&action=show_address"><li class="shdz"> 收货地址</li></a>
+                        <li> 健康档案</li>
+                        <li> 分享绑定</li>
+                        <li> 邮件订阅</li>
+                        <li> 应用授权</li>
+                    </ul>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="view">
+        <div class="container">
+            <div class="row">
+                <div class="bg row">
+                    <!-- offset -->
+                    <div class="bg1 bg2 col-md-2"  @click="change_goods(0)" :class="{'cur':box_code == 0}">早市</div>
+                    <div class="bg1 col-md-2"  @click="change_goods(1)" :class="{'cur':box_code == 1}">午市</div>
+                    <div class="bg1 juli col-md-2"  @click="change_goods(2)" :class="{'cur':box_code == 2}">晚市</div>
+                    <div class="daojishi col-md-4">距离活动开始还有<span class="da"></span>
+                </div>
+                <div class="row goods_list_box">
+                    <div class="left_arrow da1" @click="go_left()">  < </div>
+                    <div class="right_arrow da1" @click="go_right()">  > </div>
+                <div class="paopao_box">
+                <div  v-for="n in 3" @click="go_num(n)" :class="{'active':change_num_a[box_code] == n-1}"></div>
+                </div>
+                    <ul v-show="box_code == 0" class="morning_box goods_list" :style="
+                    'margin-left:'+move_px[box_code]">
+                        <li v-for="item in goods_data">
+                            <a :href=" 'http://localhost/pratice_mvc/index.php?control=Goods&action=get_id&id='+item.id">
+                            <div class="price">￥{{item.g_price}}</div>
+                            <img :src="item.g_picurl">
+                            <h3>{{item.g_name}}</h3>
+                            <h4>好评率95%</h4>
+                            <div class="fu">立即抢购</div>
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <ul v-show="box_code == 1" class="zhong_box goods_list" :style="
+                    'margin-left:'+move_px[box_code]">
+                        <li v-for="n in 15">
+                            <img  src="picture/price.jpg" alt="">
+                            <img src="https://img11.360buyimg.com/babel/s180x180_jfs/t22465/99/732430909/236393/30b7d947/5b403021N8af7cc2f.jpg!q80.webp" alt="">
+                            <h3>狮子传奇 夏季榨汁橙3斤<br>橙子新鲜水果</h3>
+                            <h4>好评率95%</h4>
+                            <div class="fu">立即抢购</div>
+                        
+                        </li>
+                    </ul>
+
+                    <ul v-show="box_code == 2" class="evening_box goods_list" :style="
+                    'margin-left:'+move_px[box_code]">
+                        <li v-for="n in 15">
+                            <img  src="picture/price.jpg" alt="">
+                            <img src="https://img12.360buyimg.com/babel/s180x180_jfs/t21898/197/613618820/589005/e759c2d5/5b125050N4f23d923.jpg!q80.webp" alt="">
+                            <h3>狮子传奇 夏季榨汁橙3斤<br>橙子新鲜水果</h3>
+                            <h4>好评率95%</h4>
+                            <div class="fu">立即抢购</div>                     
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript">
+    setInterval(autodz,1000);
+    function autodz() {
+    var span=document.querySelector(".view .container .bg .daojishi span");
+
+    var startTime=new Date();
+
+    var endTime=new Date("2018/8/3 22:20");
+
+    //获取到秒
+    var allTime=parseInt((endTime.getTime() - startTime.getTime()) / 1000);
+
+    //秒
+    var s=allTime%60;
+    //分
+    var m=parseInt(allTime / 60 %60);
+    //小时
+    var h=parseInt(allTime /60 / 60 % 24)
+    span.innerHTML=h+":"+m+":"+s
+}
+        
+        new Vue({
+            el:'.view',
+            data:{
+                box_code:0,//当前显示的商品盒子代号
+                move_px:[0,0,0],//移动的像素
+                change_num_a:[0,0,0],//切换的次数
+                box_width:-974,//盒子的宽度
+                goods_data:[],
+            },
+            created(){//已加载页面则请求后台的商品数据进行渲染
+            this.$http.get('http://localhost/pratice_mvc/index.php?control=Goods&action=goods_list_data')
+            .then((rtnData)=>{
+                this.goods_data = rtnData.data;
+                console.log(this.goods_data);
+            })
+            },
+            methods:{
+                change_goods(code){
+                    // 数据驱动
+                    this.box_code = code;
+                },
+                go_left(){
+                    num = --this.change_num_a[this.box_code] <0 ? 2 : this.change_num_a[this.box_code] 
+
+                     this.$set(this.change_num_a,this.box_code,num) 
+                    // 移动的距离 = 切换的次数 * 盒子的宽度
+                    this.move_px[this.box_code] = this.change_num_a[this.box_code] * this.box_width + "px"
+                },
+                go_right(){
+                    num = ++this.change_num_a[this.box_code] >=3 ? 0 : this.change_num_a[this.box_code] 
+
+                    // 第一个参数：要修改的数组数据模型
+                    // 第二个参数：数组的下标，对象就是属性
+                    // 第三个参数：新的值
+                    this.$set(this.change_num_a,this.box_code,num) 
+
+                    // 移动的距离 = 切换的次数 * 盒子的宽度
+                    this.move_px[this.box_code] = this.change_num_a[this.box_code] * this.box_width + "px"
+                },
+                go_num(num){
+                    --num
+                    // $set数组修改的时候
+                    this.$set(this.change_num_a,this.box_code,num)
+                     
+
+                    console.log(this.change_num_a)
+                    // 数组双向绑定，只有删除和添加的时候，才会双向更新
+                    // 气泡切换
+                    this.move_px[this.box_code] = num * this.box_width + "px"
+                },
+                 
+            }
+        })
+    </script>

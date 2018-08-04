@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>个人信息</title>
+	<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+	<script type="text/javascript" src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+			list-style: none;
+			text-decoration: none;
+		}
+		h1{
+			text-align: center;
+		}
+		.view{
+			font-size: 30px;
+		}
+		body{
+			background: url('picture/personal.jpg');
+			background-size:100%;
+
+		}
+		.group{
+			margin-bottom: 30px;
+
+		}
+		.group input{
+			font-size: 30px;
+			background: rgba(0,0,0,0);
+			border:none;
+		}
+		img{
+			width: 300px;
+			height: 300px;
+			border-radius: 50%;
+		}
+		.back{
+			font-size: 40px;
+			
+		}
+		.tou{
+			display: inline-block;
+			position: absolute;
+			right: 100px;
+			top: 50px;
+		}
+		.change{
+			display: inline-block;
+			width: 400px;
+			position: absolute;
+			right: 30px;
+			top: 400px;
+		}
+		.change input{
+			width: 100%;
+		}
+		.tag{
+			display: inline-block;
+			position: absolute;
+			right: 100px;
+			top: 350px;
+			font-size: 30px;
+		}
+		.btn{
+			display: inline-block;
+			padding: 10px 20px;
+			font-size: 30px;
+			background: rgba(0,0,0,0);
+			border:none;
+			box-shadow: 2px 2px 8px;
+			position: absolute;
+			bottom: 30px;
+			left: 40%;
+		}
+		.uname,.usex,.uage{
+			
+			
+			padding-left: 100px;
+			margin-top: 100px;
+			
+			
+		}
+		.uname{
+			margin-top: 0px;
+		}
+		
+
+	</style>
+</head>
+<body>
+	<a href="http://localhost/pratice_mvc/index.php?control=Goods&action=goods_list"><button class="back"><</button></a>
+	<h1>个人信息页面</h1>
+	<div class="view">
+
+	<form action="http://localhost/pratice_mvc/index.php" method="post" enctype="multipart/form-data">
+		
+    <div class="group uname">
+    	 <label>姓名：</label><input type="text" name="p_name" :value="goods_data[0].p_name">
+    </div>
+    <div class="group uage">
+    	 <label>年龄：</label><input type="text" name="p_age" :value="goods_data[0].p_age">
+    </div>
+    <div class="group usex">
+    	 <label>性别：</label><input type="text" name="p_sex" :value="goods_data[0].p_sex">
+    	 <input type="hidden" name="id" :value="goods_data[0].id">
+    	 <input type="hidden" name="pic" :value="goods_data[0].p_picurl">
+    </div>
+    <div class="group tou">
+    	 
+    	 <img :src="goods_data[0].p_picurl">
+    </div>
+    <div class="tag">点击选择文件可更换头像</div>
+    <div class="group change">
+
+    	<input type="file" name="picture">
+
+    </div>
+    
+	<input type="hidden" name="control" value="Personal">
+    <input type="hidden" name="action" value="save_user">
+	<input type="submit" value="保存个人信息" class="btn">
+	</form>
+	</div>
+	<script type="text/javascript">
+	new Vue({
+		el:'.view',
+		data:{
+			goods_data:[],
+		},
+		created(){//已加载页面则请求后台的商品数据进行渲染
+			this.$http.get('http://localhost/pratice_mvc/index.php?control=Personal&action=do_edit_user')
+			.then((rtnData)=>{
+				this.goods_data = rtnData.data;
+				console.log(this.goods_data);
+			})
+			}
+	})
+
+
+
+
+
+</script>
+
+</body>
+</html>

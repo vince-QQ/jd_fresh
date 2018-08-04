@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+    <style>
+        *{
+            padding:0;
+            margin: 0;
+        }
+        ul>li{
+            list-style: none;
+        }
+        .box{
+            width: 80%;
+            height: 80%;
+            margin: auto;
+        }
+        .box .top{
+
+            width:100%;
+            height: 20%;
+
+        }
+        .box .top img{
+            width:100%;
+            height: 100%;
+
+        }
+        .box .bottom{
+            width:100%;
+            height: 80%;
+        }
+        .box .bottom .left{
+            width: 20%;
+            height: 100%;
+            text-align: left;
+            padding: 50px;
+            background: #ccc;
+            float: left;
+        }
+        .box .bottom .left ul{
+            width:100%;
+            height: 100%;
+           
+        }
+        .box .bottom .left ul li{
+            width: 100%;
+            height: 100%;
+            margin-top: 20px;  
+        }
+        .box .bottom .left ul li a{
+            text-decoration: none;
+            color: black; 
+        }
+        .box .bottom .right{
+            float: left;
+            width: 80%;
+            height: 100%;
+        }
+        .box .bottom .right .p_adress{
+            width:100%;
+            height: 100%;
+        }
+        .box .bottom .right .p_adress ul{
+
+            width: 100%;
+            height: 400px;
+            overflow: scroll;
+        }
+        .box .bottom .right .p_adress ul li{
+              line-height: 40px;
+              font-size: 20px;
+              text-align: center;
+              border: 1px #ccc solid;
+        }
+        .box .bottom .right .p_adress ul:hover{
+            box-shadow: 1px 1px 9px #666;
+        }
+        .box .bottom .right .p_adress div{
+            width: 100px;
+            height: 50px;
+            margin:30px auto;
+            
+
+        }
+        .txt{
+            text-align: left;
+            padding-left: 250px;
+            font-size: 15px;
+
+        }
+        .back{
+            font-size: 40px;
+            position: absolute;
+        }
+
+
+    </style>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="http://localhost/pratice_mvc/index.php?control=Goods&action=goods_list"><button class="back"><</button></a>
+    <div class="box ">
+        <div class="top"><img src="picture/1.png" alt=""></div>
+        <div class="bottom ">
+            <div class=" left">
+
+                    <h3>设置</h3>
+                    <ul>
+                        <li><a href=""> 个人信息</a></li>
+                        <li><a href=""> 账户安全</a></li>
+                        <li><a href=""> 我的尺码</a></li>
+                        <li><a href=""> 账户绑定</a></li>
+                        <li><a href="adress.html" target=""> 收货地址</a></li>
+                        <li><a href=""> 健康档案</a></li>
+                        <li><a href=""> 分享绑定</a></li>
+                        <li><a href=""> 邮件订阅</a></li>
+                        <li><a href=""> 应用授权</a></li>
+                    </ul>
+    
+            </div>
+            <div class="right">
+                <div class="p_information">
+
+
+                </div>
+                <div class="p_adress">
+                        <ul>
+                            <li v-for="info in goods_data">
+                                <p class="txt">姓名：{{info.a_name}}</p>
+                                <p class="txt">地区：{{info.a_area}}</p>
+                                <p class="txt">详细地址：{{info.a_desc}}</p>
+                                <p class="txt">手机号码：{{info.a_phone}}</p>
+                            </li>
+
+                        </ul>
+                        <div><a class="btn btn-success" href="http://localhost/pratice_mvc/index.php?control=Address&action=edit_address"  target="_top">添加收获地址</a></div> 
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+<script type="text/javascript">
+    new Vue({
+    el:'.p_adress',
+    data:{
+    goods_data:[],
+    },
+    created(){
+    this.$http.get('http://localhost/pratice_mvc/index.php?control=Address&action=do_show_address')
+    .then((rtnD)=>{
+    this.goods_data = rtnD.data
+    console.log(this.goods_data)
+    })
+    }
+    })
+    </script>
+</html>

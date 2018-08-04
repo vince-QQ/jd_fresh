@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+    
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style type="text/css">
+        *{
+            padding:0;
+            margin: 0;
+        }
+        ul>li{
+            list-style: none;
+        }
+        .box{
+            width: 80%;
+            height: 80%;
+            margin: auto;
+        }
+        .box .top{
+
+            width:100%;
+            height: 20%;
+
+        }
+        .box .top img{
+            width:100%;
+            height: 100%;
+
+        }
+        .box .bottom{
+            width:100%;
+            height: 80%;
+        }
+        .box .bottom .left{
+            width: 20%;
+            height: 100%;
+            text-align: left;
+            padding: 50px;
+            background: #ccc;
+            float: left;
+        }
+        .box .bottom .left ul{
+            width:100%;
+            height: 100%;
+           
+        }
+        .box .bottom .left ul li{
+            width: 100%;
+            height: 100%;
+            margin-top: 20px;  
+        }
+        .box .bottom .right{
+            float: left;
+            width: 80%;
+            height: 100%;
+        }
+        .box .bottom .right .p_adress{
+            width:100%;
+            height: 100%;
+        }
+        .box .bottom .right .p_adress .main{
+
+            margin-top: 30px;
+        }
+        .but-left{
+            width: 20px;
+            height: 50px;
+            background: gray;
+            font-size: 40px;
+            line-height: 50px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <a href="http://localhost/pratice_mvc/index.php?control=Address&action=show_address" class="but-left"><button><</button> </a>
+    <div class="box ">
+        <div class="top"><img src="picture/1.png" alt=""></div>
+        <div class="bottom ">
+            <div class=" left">
+
+                    <h3>设置</h3>
+                    <ul>
+                        <li>个人信息</li>
+                        <li>账户安全</li>
+                        <li>我的尺码</li>
+                        <li>账户绑定</li>
+                        <li>收货地址</li>
+                        <li>健康档案</li>
+                        <li>分享绑定</li>
+                        <li>邮件订阅</li>
+                        <li>应用授权</li>
+                    </ul>
+    
+            </div>
+            <div class="right">
+                <div class="p_information">
+
+
+                </div>
+                <div class="p_adress container">
+                        <form action="http://localhost/pratice_mvc/index.php" class="form" method="post">
+                                <div class="from-group main">
+                                    <label for="">收货人</label>    
+                                    <input type="text" name="a_name" class="form-control">
+                                </div>
+                                <div class="from-group main">
+                                        <label for="">手机号码</label>    
+                                        <input type="text" name="a_phone" class="form-control">
+                                </div>
+                                <div class="from-group main">
+                                        <label for="">所在地区</label>    
+                                        <input type="text" name="a_area" class="form-control">
+                                    </div>
+                                <div class="from-group main">
+                                        <label for="">详细地址</label>    
+                                        <input type="text" name="a_desc" class="form-control">
+                                </div>
+                                <div class="from-group main">
+                                        <input type="hidden" name="control" value="Address">
+                                        <input type="hidden" name="action" value="save_address">
+                                        <input type="submit" class="btn btn-success btn-block" value="提交">
+                                </div>
+                            </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+</html>
